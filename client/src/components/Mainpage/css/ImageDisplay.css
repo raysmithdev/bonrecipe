@@ -26,13 +26,18 @@
     box-shadow: 0px 4px 5px #ccc;
     transition: all .2s ease-in-out;
     background-color: rgba(255, 169, 135, 0.4);
+    border-radius: 10%;
+    border: 4px double #fff;
+    font-family: "Elsie";
+    font-size: 1.5em;
+    letter-spacing: 1px;
 }
 
-.ImageDisplay .recipeItems:nth-child(3n-3) {
+.ImageDisplay .recipeItems:nth-child(3n-1) {
     background-color: rgba(53, 163, 177, 0.3);
 }
 
-.ImageDisplay .recipeItems:nth-child(3n-2) {
+.ImageDisplay .recipeItems:nth-child(3n-3) {
     background-color: rgba(195, 49, 73, 0.2);
 }
 
@@ -66,7 +71,7 @@
 
 .ImageDisplay .tooltip .tooltiptext {
     visibility: hidden;
-    width: 200px;
+    width: 250px;
     background-color: #555;
     color: #fff;
     text-align: left;
@@ -76,9 +81,12 @@
     z-index: 1;
     bottom: 125%;
     z-index: 100;
-    left: 50%;
+    left: 41%;
     margin-left: -100px;
     opacity: 0;
+    font-family: "Varela Round", Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 0.7em;
+    font-weight: 100;
     transition: opacity 0.4s;
 }
 

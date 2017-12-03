@@ -20,11 +20,15 @@
     "cors": "^2.8.4",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
+    "express-promise-router": "^2.0.0",
+    "joi": "^13.0.2",
     "jsonwebtoken": "^8.1.0",
     "mongoose": "^4.13.5",
     "morgan": "^1.9.0",
     "nodemon": "^1.12.1",
     "passport": "^0.4.0",
+    "passport-facebook-token": "^3.3.0",
+    "passport-google-plus-token": "^2.1.0",
     "passport-jwt": "^3.0.1",
     "passport-local": "^1.0.0"
   }

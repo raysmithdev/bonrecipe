@@ -4,12 +4,12 @@ const express = require('express'),
     cors = require('cors'),
     app = express(),
     bodyParser = require('body-parser'),
-    axios = require('axios'),
-    morgan = require('morgan'),
-    { APP_ID, APP_KEY, PORT } = require('./config')
+    mongoose = require('mongoose'),
+     morgan = require('morgan'),
+    { DATABASE_URL, PORT } = require('./config')
 
 app.use(cors())
-app.use(morgan('common'))
+app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*")
@@ -19,16 +19,15 @@ app.use((req, res, next) => {
     next()
 })
 
-app.get('/api/recipes', (req, res) => {
-    axios.get(`http://api.yummly.com/v1/api/recipes?_app_id=${APP_ID}&_app_key=${APP_KEY}&maxResult=30&start=10`)
-        .then((response) => {
-            res.send(response.data.matches)
-        })
-        .catch((error) => {
-            res.send(error)
-            res.status(500).json({ message: 'Internal server error' })
-        })
-})
+mongoose.Promise = global.Promise
+mongoose.connect(DATABASE_URL, { useMongoClient: true })
+mongoose.connection.once('open', () => {
+    console.log('Mongo Connection Opened!')
+}).on('error', (error) => console.warn('Warning ', error))
+
+require('./routes/recipeRoutes')(app)
+app.use('/users', require('./routes/userRoutes'))
+
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
 
 module.exports = { app }

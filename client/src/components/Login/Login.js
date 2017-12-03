@@ -5,7 +5,7 @@ class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            hasAccount: false,
+            hasAccount: true,
             tooltipText: `Have an Account?`,
             headerText: `Create An Account`,
             buttonText: `Register`
@@ -20,11 +20,12 @@ class Login extends Component {
                 tooltipText: `Don't Have an Account?`,
                 headerText: `Welcome Back!`,
                 buttonText: `Sign In`
-            })} else {
-                return this.setState({
-                    tooltipText: `Have an Account?`,
-                    headerText: `Create An Account`,
-                    buttonText: `Register`
+            })
+        } else {
+            return this.setState({
+                tooltipText: `Have an Account?`,
+                headerText: `Create An Account`,
+                buttonText: `Register`
             })
         }
     }
@@ -41,7 +42,10 @@ class Login extends Component {
                         <input type="email" placeholder="Email Address" />
                         <input type="password" placeholder="Password" />
                         <button>{this.state.buttonText}</button>
-                    </form></section>
+                    </form>
+                </section>
+                <button className="googleBtn"></button>
+                <button className="facebookBtn"></button>
             </div>
         )
     }

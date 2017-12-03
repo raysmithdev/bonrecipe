@@ -11,7 +11,7 @@ body {
     font-family: sans-serif;
     overflow-x: hidden;
     position: relative;
-    font-family: "Varela Round", Calibri, 'Trebuchet MS', sans-serif
+    font-family: "Varela Round", Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .clearfix:before,
