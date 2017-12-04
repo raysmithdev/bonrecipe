@@ -20,3 +20,19 @@
 .Header-title i {
     margin-right: 10px;
 }
+
+.Header .headerNav {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 25%;
+}
+
+.Header .headerNav a {
+    transition: 0.3s ease;
+}
+
+.Header .headerNav a:hover {
+    color: rgb(223, 255, 65);
+}

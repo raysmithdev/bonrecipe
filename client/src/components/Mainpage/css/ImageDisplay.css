@@ -7,7 +7,9 @@
     justify-content: center;
     flex-wrap: wrap;
     margin: 0 auto;
+    overflow: scroll;
     width: 80vw;
+    height: 95vh;
     justify-content: center;
 }
 
@@ -29,7 +31,7 @@
     border-radius: 10%;
     border: 4px double #fff;
     font-family: "Elsie";
-    font-size: 1.5em;
+    font-size: 1.3em;
     letter-spacing: 1px;
 }
 

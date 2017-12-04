@@ -5,8 +5,14 @@ const express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
-     morgan = require('morgan'),
-    { DATABASE_URL, PORT } = require('./config')
+    cookieSession = require('cookie-session'),
+    passport = require('passport'),
+    morgan = require('morgan'),
+    { DATABASE_URL, PORT, COOKIE_KEY } = require('./config')
+
+require('./models/googleUser')
+require('./models/facebookUser')
+require('./strategies/authStrategies')
 
 app.use(cors())
 app.use(morgan('dev'))
@@ -25,9 +31,19 @@ mongoose.connection.once('open', () => {
     console.log('Mongo Connection Opened!')
 }).on('error', (error) => console.warn('Warning ', error))
 
+app.use(
+    cookieSession({
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+        keys: [COOKIE_KEY]
+    })
+)
+app.use(passport.initialize())
+app.use(passport.session())
+
 require('./routes/recipeRoutes')(app)
-app.use('/users', require('./routes/userRoutes'))
+require('./routes/authRoutes')(app)
+
+// app.use('/users', require('./routes/userRoutes'))
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
-
 module.exports = { app }

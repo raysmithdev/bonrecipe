@@ -12,6 +12,7 @@ body {
     overflow-x: hidden;
     position: relative;
     font-family: "Varela Round", Calibri, 'Trebuchet MS', sans-serif;
+    overflow: hidden;
 }
 
 .clearfix:before,

@@ -13,9 +13,7 @@ const persistedState = loadState()
 const store = createStore(
     reducers, 
     persistedState, 
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-    )
+    applyMiddleware(thunk))
 store.subscribe(() => saveState(store.getState()))
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'))
 registerServiceWorker()

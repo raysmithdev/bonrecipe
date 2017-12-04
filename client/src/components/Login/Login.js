@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import './Login.css'
 
 class Login extends Component {
@@ -44,8 +44,10 @@ class Login extends Component {
                         <button>{this.state.buttonText}</button>
                     </form>
                 </section>
-                <button className="googleBtn"></button>
-                <button className="facebookBtn"></button>
+                <section className="buttonSection">
+                    <a href='http://localhost:5000/auth/google' className="googleBtn"><i className="fa fa-times fa-google-plus"></i>Sign-In with Google</a>
+                    <a href='http://localhost:5000/auth/facebook' className="facebookBtn"><i className="fa fa-times fa-facebook"></i>Sign-In with Facebook</a>
+                </section>
             </div>
         )
     }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
+import * as actions from './actions'
 
 import Header from './components/Header'
 import Home from './components/Mainpage/Home'
@@ -9,6 +10,16 @@ import Account from './components/Account/Account'
 import './App.css'
 
 class App extends Component {
+  componentDidMount() {
+    const userId = localStorage.getItem('userId')
+    const userEmail = localStorage.getItem('userEmail')
+    const userName = localStorage.getItem('userName')
+
+    if (userId && userEmail) {
+      this.props.dispatch(actions.fetchUserSuccess(userId, userEmail, userName))
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -16,8 +27,9 @@ class App extends Component {
           <div>
             <Header />
             <Route exact path='/' component={Home} />
-            <Route exact path='/login' component={Login} />
-            <Route exact path='/account' component={Account} />
+            <Route path='/:userId/:userEmail/:userName' component={Home} />
+            <Route path='/login' component={Login} />
+            <Route path='/account' component={Account} />
           </div>
         </BrowserRouter>
       </div>

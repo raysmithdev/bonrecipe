@@ -3,7 +3,6 @@ import './css/ImageDisplay.css'
 
 class ImageDisplay extends Component {
     render() {
-        console.log(this.props.recipeData)
         const recipeData = this.props.recipeData
         const recipeList = recipeData.map(recipe => {
             const ingredients = recipe.ingredients.join().split(",")
