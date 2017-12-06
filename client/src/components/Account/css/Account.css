@@ -1,0 +1,83 @@
+.Account {
+    position: relative;
+    width: 80vw;
+    margin: 0 auto;
+}
+
+.Account .listContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.Account input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+
+.Account section {
+    width: 45%;
+    margin: 2%;
+}
+
+.Account label {
+    position: relative;
+    display: block;
+    padding: 0 0 0 1em;
+    background-color: rgba(53, 167, 177, 0.3);
+    font-weight: bold;
+    line-height: 3;
+    cursor: pointer;
+    color: rgba(59, 59, 59, 0.897);
+    margin: 0.1% 0;
+    transition: all .3s ease-in-out;
+}
+
+.Account .userRecipeBlock label {
+    background-color: rgba(195, 49, 73, 0.2);
+}
+
+.Account label:hover {
+    background-color: rgba(196, 232, 18, 0.424);
+}
+
+.Account .tab-content {
+    max-height: 0;
+    overflow: hidden;
+    background: #ffffff;
+    -webkit-transition: max-height .35s;
+    -o-transition: max-height .35s;
+    transition: max-height .35s;
+    box-shadow: 0px 4px 5px #ccc;
+}
+
+.Account .tab-content p {
+    margin: 1em;
+}
+
+.Account input:checked~.tab-content {
+    max-height: 10em;
+}
+
+.Account label::after {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 3em;
+    height: 3em;
+    line-height: 3;
+    text-align: center;
+    -webkit-transition: all .35s;
+    -o-transition: all .35s;
+    transition: all .35s;
+}
+
+input[type=checkbox]+label::after {
+    content: "+";
+}
+
+input[type=checkbox]:checked+label::after {
+    transform: rotate(315deg);
+}

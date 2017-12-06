@@ -15,8 +15,7 @@ export const fetchUserSuccess = (id, email, name, service) => ({
 })
 
 export const fetchUserRecipes = (id, service) => async dispatch => {
-    // console.log(id, service, type)
-    const route = `http://localhost:5000/recipes/${id}/${service}`
+    const route = `http://localhost:5000/recipes/${id}/${service}` 
     const res = await axios.get(route)
     dispatch({ type: FETCH_USER_RECIPES, payload: res.data })
 }

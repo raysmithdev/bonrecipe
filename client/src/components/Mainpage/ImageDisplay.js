@@ -1,11 +1,11 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import './css/ImageDisplay.css'
 
 class ImageDisplay extends Component {
     render() {
         const recipeData = this.props.recipeData
         let recipeList = ''
-        if(recipeData){
+        if (recipeData) {
             recipeList = recipeData.map(recipe => {
                 const ingredients = recipe.ingredients.join().split(",")
                 const ingredList = ingredients.map((item, i) => {
@@ -21,7 +21,7 @@ class ImageDisplay extends Component {
                     </div>
                 )
             })
-        } else{
+        } else {
             recipeList = `Could not retrieve recipe data`
         }
 
