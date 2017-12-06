@@ -7,7 +7,8 @@ export default function (state = {}, action) {
                 ...state,
                 id: action.id,
                 email: action.email,
-                name: action.name
+                name: action.name,
+                service: action.service,
             }
         }
         case ON_LOGOUT:

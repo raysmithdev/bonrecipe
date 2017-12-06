@@ -3,13 +3,8 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { onLogout } from '../actions/index'
 
-
 class Header extends Component {
     renderContent() {
-        console.log(localStorage)
-        console.log(this.props)
-
-        // switch (false) {
         switch (!this.props.auth.id) {
             case null:
                 return

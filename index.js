@@ -19,9 +19,9 @@ app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS")
+    res.header("Access-Control-Request-Headers")
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
-    res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization')
-    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE')
     next()
 })
 
@@ -40,10 +40,9 @@ app.use(
 app.use(passport.initialize())
 app.use(passport.session())
 
-require('./routes/recipeRoutes')(app)
 require('./routes/authRoutes')(app)
-
-// app.use('/users', require('./routes/userRoutes'))
+require('./routes/recipeRoutes')(app)
+require('./routes/crudRoutes')(app)
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
 module.exports = { app }

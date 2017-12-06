@@ -37,7 +37,8 @@ passport.use(new GoogleStrategy({
                 id: profile.id,
                 first_name: profile.name.givenName,
                 last_name: profile.name.familyName,
-                email: profile.emails[0].value
+                email: profile.emails[0].value,
+                service: profile.provider
             }).save()
             done(null, user)
         } catch (error) {
@@ -64,7 +65,8 @@ passport.use(new FacebookStrategy({
                 id: profile.id,
                 first_name: profile.name.givenName,
                 last_name: profile.name.familyName,
-                email: profile.emails[0].value
+                email: profile.emails[0].value,
+                service: profile.provider
             }).save()
             done(null, user)
         } catch (error) {

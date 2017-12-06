@@ -8,7 +8,8 @@ module.exports = app => {
 
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', { failureRedirect: 'http://localhost:3000/login', session: false }), (req, res) => {
-            res.redirect(`http://localhost:3000/${req.user._id}/${req.user.email}/${req.user.first_name}`)
+            console.log(req.user)
+            res.redirect(`http://localhost:3000/${req.user._id}/${req.user.email}/${req.user.first_name}/${req.user.service}`)
         })
 
     app.get('/auth/google', passport.authenticate('google', {
@@ -17,8 +18,8 @@ module.exports = app => {
     }))
 
     app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: 'http://localhost:3000/login', session: false }), (req, res) => {
-        
-    res.redirect(`http://localhost:3000/${req.user._id}/${req.user.email}/${req.user.first_name}`)
+        console.log(req.user)
+        res.redirect(`http://localhost:3000/${req.user._id}/${req.user.email}/${req.user.first_name}/${req.user.service}`)
     })
 
     app.get('/auth/logout', (req, res) => {

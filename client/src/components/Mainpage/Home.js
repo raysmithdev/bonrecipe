@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import SearchBar from './SearchBar'
 import ImageDisplay from './ImageDisplay'
 
@@ -9,13 +10,17 @@ import { fetchRecipes, fetchUserSuccess } from '../../actions/index'
 class Home extends Component {
     componentDidMount() {
         this.props.fetchRecipes()
-        
         if (this.props.match.params.userId) {
             localStorage.setItem('userId', this.props.match.params.userId)
             localStorage.setItem('userEmail', this.props.match.params.userEmail)
             localStorage.setItem('userName', this.props.match.params.userName)
-            this.props.fetchUserSuccess(this.props.match.params.userId, this.props.match.params.userEmail, this.props.match.params.userName)
-        }
+            localStorage.setItem('userService', this.props.match.params.userService)
+            this.props.fetchUserSuccess(
+                this.props.match.params.userId, 
+                this.props.match.params.userEmail, 
+                this.props.match.params.userName,
+                this.props.match.params.userService)
+        } else <Redirect to='login' />
     }
 
     render() {

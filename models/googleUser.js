@@ -17,7 +17,21 @@ const googleSchema = new Schema({
         type: String,
         trim: true,
         lowercase: true
+    },
+    service: {
+        type: String
+    },
+    recipes: {
+        type: [{
+            sys_recipes: {
+                type: Array
+            },
+            user_recipes: {
+                type: Array
+            }
+        }]
     }
+
 })
 
 const GoogleUser = mongoose.model('googleUser', googleSchema)
