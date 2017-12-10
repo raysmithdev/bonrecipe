@@ -51,8 +51,6 @@
     transition: max-height .35s;
     box-shadow: 0px 4px 5px #ccc;
     display: flex;
-    /* justify-content: space-between; */
-    /* align-items: center; */
 }
 
 .Account .tab-content p {
@@ -87,8 +85,12 @@
     margin-bottom: 2%;
 }
 
+.Account .imageSection span {
+    font-size: 0.8em;
+}
+
 .Account .ingredSection {
-    flex-basis: 70%;    
+    flex-basis: 70%;
 }
 
 .Account .ingredSection aside {

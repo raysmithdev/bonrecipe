@@ -7,8 +7,6 @@ module.exports = app => {
     User = ''
 
     app.get('/recipes/:id/:service', (req, res) => {
-        console.log('reached')
-        
         try {
             if (req.params.service === 'facebook') {
                 User = fbUser
@@ -42,11 +40,11 @@ module.exports = app => {
                 User = gooUser
             }
 
-            console.log(req.params.id)
+            // console.log(req.params.id)
             User.update({
                 _id: req.params.id
             }, {
-                    $push: {
+                    $addToSet: {
                         'recipes.sys_recipes': {
                             id: req.body[0],
                             name: req.body[1],
@@ -54,16 +52,16 @@ module.exports = app => {
                             image: req.body[3],
                             cookTime: req.body[4]
                         }
-                    }, 
-                }, { upsert: true },
-                 (err, response) => {
+                    },
+                },
+                (err, response) => {
                     if (err) {
-                        console.log(err);
+                        res.send(err)
                     }
-                    console.log(response);
+                    res.send(response)
                 })
         } catch (error) {
-
+            res.send(error)            
         }
     })
 }
