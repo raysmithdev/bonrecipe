@@ -14,7 +14,6 @@ module.exports = app => {
             if (req.params.service === 'google') {
                 User = gooUser
             }
-            console.log(req.params.id)
 
             User.findById(req.params.id, (err, items) => {
                 if (err) {
@@ -23,7 +22,6 @@ module.exports = app => {
                 if (!items.recipes) {
                     res.send('No Items to Display')
                 }
-                console.log(items)
                 res.send([items.recipes.sys_recipes, items.recipes.user_recipes])
             })
         } catch (error) {
@@ -40,7 +38,6 @@ module.exports = app => {
                 User = gooUser
             }
 
-            // console.log(req.params.id)
             User.update({
                 _id: req.params.id
             }, {

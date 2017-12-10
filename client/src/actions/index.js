@@ -52,18 +52,6 @@ export const searchRecipe = (query) => async dispatch => {
     }
 }
 
-// export const searchRecipe = (query) => async dispatch => {
-//     try {
-//         console.log(query)        
-//         const route = `http://localhost:5000/api/recipes/`
-//         const res = await axios.post(route, query)
-//         // dispatch({ type: SEARCH_RECIPE, payload: res.data })
-//     } catch (error) {
-//         console.log(error)        
-//         return error
-//     }
-// }
-
 export const onLogout = () => {
     return { type: ON_LOGOUT }
 }

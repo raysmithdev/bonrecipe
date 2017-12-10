@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import SearchBar from './SearchBar'
 import ImageDisplay from './ImageDisplay'
 
@@ -8,11 +8,11 @@ import { bindActionCreators } from 'redux'
 import { fetchRecipes, fetchUserSuccess } from '../../actions/index'
 
 class Home extends Component {
-    componentWillMount(){
-        // if (!this.props.match.params.userId || !this.props.auth.id){
-        //     this.props.history.push('/login')
-        // }
-    }
+    // componentWillMount() {
+    //     if (!this.props.auth.id) {
+    //         this.props.history.push('/login')
+    //     }
+    // }
     componentDidMount() {
         this.props.fetchRecipes()
         if (this.props.match.params.userId) {
@@ -21,20 +21,20 @@ class Home extends Component {
             localStorage.setItem('userName', this.props.match.params.userName)
             localStorage.setItem('userService', this.props.match.params.userService)
             this.props.fetchUserSuccess(
-                this.props.match.params.userId, 
-                this.props.match.params.userEmail, 
+                this.props.match.params.userId,
+                this.props.match.params.userEmail,
                 this.props.match.params.userName,
                 this.props.match.params.userService)
-        } 
+        }
     }
 
     render() {
-
-
         return (
             <div>
+                {this.props.auth ? "" : <Redirect to="/login" />}              
+
                 <SearchBar />
-                <ImageDisplay recipeData={this.props.recipes}/>
+                <ImageDisplay recipeData={this.props.recipes} />
             </div>
         )
     }

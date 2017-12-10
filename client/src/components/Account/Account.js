@@ -4,11 +4,11 @@ import { fetchUserRecipes } from '../../actions/index'
 import './css/Account.css'
 
 class Account extends Component {
-    componentWillMount() {
-        if (!this.props.auth.id || this.props.auth.id === undefined) {
-            this.props.history.push('/login')
-        }
-    }
+    // componentWillMount() {
+    //     if (!this.props.auth.id || this.props.auth.id === undefined) {
+    //         this.props.history.push('/login')
+    //     }
+    // }
     componentDidMount() {
         this.props.dispatch(fetchUserRecipes(this.props.auth.id, this.props.auth.service))
     }
@@ -16,7 +16,6 @@ class Account extends Component {
     render() {
         console.log(this.props)
         console.log(this.props.auth.id )
-        console.log(this.props.accountRecipes[0])
         let sysRecipeList = '',
             userRecipeList = ''
         if (this.props.accountRecipes[0] instanceof String || typeof this.props.accountRecipes[0] === 'string') {

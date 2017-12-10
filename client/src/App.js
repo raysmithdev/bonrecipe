@@ -22,18 +22,21 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props.isLoggedIn)
+    
     return (
       <div className="App">
         <BrowserRouter>
           <div>
             <Header />
-            <Switch>
-              <Route exact path='/' component={Home} />
-              <Route path='/:userId/:userEmail/:userName/:userService' component={Home} />
-              <Route path='/login' component={Login} />
-              <Route path='/account' component={Account} />
-              <Redirect to='/'/>
-            </Switch>
+            {/* <Switch> */}
+            <Redirect to="/login" />
+            <Route exact path='/' component={Home} />
+            <Route path='/:userId/:userEmail/:userName/:userService' component={Home} />
+            <Route path='/login' component={Login} />
+            <Route path='/account' component={Account} />
+            {/* <Redirect to='/'/> */}
+            {/* </Switch> */}
           </div>
         </BrowserRouter>
       </div>
@@ -41,4 +44,13 @@ class App extends Component {
   }
 }
 
-export default connect()(App)
+//mapstatetoprops
+function mapStateToProps(state) {
+  console.log(state)
+  
+  return {
+     isLoggedIn: state.auth.isLoggedIn
+  }
+}
+
+export default connect(mapStateToProps)(App)

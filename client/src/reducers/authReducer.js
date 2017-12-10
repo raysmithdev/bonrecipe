@@ -1,6 +1,8 @@
 import { FETCH_USER_SUCCESS, ON_LOGOUT } from '../actions/types'
-
-export default function (state = {}, action) {
+const initialState = {
+    isLoggedIn: false
+}
+export default function (state = initialState, action) {
     switch (action.type) {
         case FETCH_USER_SUCCESS: {     
             return {
@@ -9,12 +11,13 @@ export default function (state = {}, action) {
                 email: action.email,
                 name: action.name,
                 service: action.service,
+                isLoggedIn: true
             }
         }
         case ON_LOGOUT:
             window.localStorage.clear()
             window.location = '/login'
-            return state = {}
+            // return state = {}
         default:
             return state
     }

@@ -11,7 +11,7 @@ class ImageDisplay extends Component {
         const m = Math.floor(seconds % 3600 / 60)
 
         const hDisplay = h > 0 ? h + (h === 1 ? " hour " : " hours ") : ""
-            const mDisplay = m > 0 ? m + (m === 1 ? " minute" : " minutes") : ""
+        const mDisplay = m > 0 ? m + (m === 1 ? " minute" : " minutes") : ""
         return hDisplay + mDisplay
     }
     clickAddItem(data) {
@@ -24,13 +24,16 @@ class ImageDisplay extends Component {
             time
         ]
         this.props.dispatch(addSysRecipe(this.props.auth.id, this.props.auth.service, body))
-
     }
 
     render() {
         const recipeData = this.props.recipeData
         let recipeList = ''
-        if (recipeData) {
+        if (!recipeData) {
+            recipeList = <p>Could not retrieve recipe data</p>
+        } else if (recipeData.length === 0) {
+            recipeList = <p>No results found for your query</p>
+        } else {
             recipeList = recipeData.map(recipe => {
                 const ingredients = recipe.ingredients.join().split(",")
                 const ingredList = ingredients.map((item, i) => {
@@ -47,8 +50,6 @@ class ImageDisplay extends Component {
                     </div>
                 )
             })
-        } else {
-            recipeList = `Could not retrieve recipe data`
         }
 
         return (
