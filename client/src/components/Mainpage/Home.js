@@ -8,6 +8,11 @@ import { bindActionCreators } from 'redux'
 import { fetchRecipes, fetchUserSuccess } from '../../actions/index'
 
 class Home extends Component {
+    componentWillMount(){
+        // if (!this.props.match.params.userId || !this.props.auth.id){
+        //     this.props.history.push('/login')
+        // }
+    }
     componentDidMount() {
         this.props.fetchRecipes()
         if (this.props.match.params.userId) {
@@ -20,10 +25,12 @@ class Home extends Component {
                 this.props.match.params.userEmail, 
                 this.props.match.params.userName,
                 this.props.match.params.userService)
-        } else <Redirect to='login' />
+        } 
     }
 
     render() {
+
+
         return (
             <div>
                 <SearchBar />
@@ -33,7 +40,7 @@ class Home extends Component {
     }
 }
 function mapStateToProps(state) {
-    return { recipes: state.recipes }
+    return { recipes: state.recipes, auth: state.auth }
 }
 
 function mapDispatchToProps(dispatch) {

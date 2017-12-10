@@ -22,16 +22,9 @@ const googleSchema = new Schema({
         type: String
     },
     recipes: {
-        type: [{
-            sys_recipes: {
-                type: Array
-            },
-            user_recipes: {
-                type: Array
-            }
-        }]
+        sys_recipes: Array,
+        user_recipes: Array
     }
-
 })
 
 const GoogleUser = mongoose.model('googleUser', googleSchema)

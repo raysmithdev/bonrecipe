@@ -1,4 +1,6 @@
 export const FETCH_RECIPES = 'fetch_recipes'
 export const FETCH_USER_RECIPES = 'fetch_user_recipes'
 export const FETCH_USER_SUCCESS = 'fetch_user_success'
+export const ADD_SYS_RECIPE = 'add_sys_recipe'
+export const ADD_USER_RECIPE = 'add_user_recipe'
 export const ON_LOGOUT = 'on_logout'

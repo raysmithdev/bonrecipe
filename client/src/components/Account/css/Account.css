@@ -44,12 +44,15 @@
 
 .Account .tab-content {
     max-height: 0;
-    overflow: hidden;
+    overflow: auto;
     background: #ffffff;
     -webkit-transition: max-height .35s;
     -o-transition: max-height .35s;
     transition: max-height .35s;
     box-shadow: 0px 4px 5px #ccc;
+    display: flex;
+    /* justify-content: space-between; */
+    /* align-items: center; */
 }
 
 .Account .tab-content p {
@@ -69,9 +72,38 @@
     height: 3em;
     line-height: 3;
     text-align: center;
-    -webkit-transition: all .35s;
-    -o-transition: all .35s;
-    transition: all .35s;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+}
+
+.Account .imageSection {
+    flex-basis: 30%;
+}
+
+.Account .imageSection img {
+    display: block;
+    width: 60%;
+    margin-bottom: 2%;
+}
+
+.Account .ingredSection {
+    flex-basis: 70%;    
+}
+
+.Account .ingredSection aside {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Account .ingredSection aside .ingredients {
+    flex: 1 0 40%;
+    margin: 1%;
+    text-transform: capitalize;
+}
+
+.Account .ingredSection h4 {
+    margin: 0;
 }
 
 input[type=checkbox]+label::after {
